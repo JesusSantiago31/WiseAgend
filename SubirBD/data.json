@@ -1,0 +1,196 @@
+{
+  "usuarios": {
+    "usuario1": {
+      "nombre": "Juan Perez",
+      "correo": "juan@example.com",
+      "contrasena": "hash",
+      "avatar": "",
+      "rango": "principiante",
+      "monedas": 0,
+      "nivel": 1,
+      "tipo_cuenta": "free",
+      "fecha_registro": { "_seconds": 0, "_nanoseconds": 0 }
+    }
+  },
+
+  "plantillas": {
+    "plantilla1": {
+      "nombre": "Plantilla de estudio",
+      "tipo": "gratuita",
+      "descripcion": "Descripción aquí",
+      "vista_previa": "",
+      "estructura_base": "",
+      "costo_monedas": 0,
+      "fecha_creacion": { "_seconds": 0, "_nanoseconds": 0 },
+      "fecha_actualizacion": { "_seconds": 0, "_nanoseconds": 0 }
+    }
+  },
+
+  "notas": {
+    "nota1": {
+      "id_usuario": "usuario1",
+      "id_plantilla": "plantilla1",
+      "titulo": "Mi primera nota",
+      "contenido": "Contenido...",
+      "etiqueta": "importante",
+      "estado": "activa",
+      "favorita": false,
+      "fecha_creacion": { "_seconds": 0, "_nanoseconds": 0 },
+      "fecha_modificacion": { "_seconds": 0, "_nanoseconds": 0 }
+    }
+  },
+
+  "categoriaNota": {
+    "cat1": {
+      "nombre": "Escuela"
+    }
+  },
+
+  "notas_categoriaNota": {
+    "link1": {
+      "id_nota": "nota1",
+      "id_categoriaNota": "cat1"
+    }
+  },
+
+  "colaboradores": {
+    "colab1": {
+      "id_nota": "nota1",
+      "id_usuario": "usuario1",
+      "rol": "lector"
+    }
+  },
+
+  "resultados_cuestionarios": {
+    "resultado1": {
+      "id_usuario": "usuario1",
+      "id_nota": "nota1",
+      "aciertos": 5,
+      "total_preguntas": 10,
+      "fecha": { "_seconds": 0, "_nanoseconds": 0 }
+    }
+  },
+
+  "temas_personalizados": {
+    "tema1": {
+      "id_usuario": "usuario1",
+      "fondo": "azul",
+      "tipografia": "Arial",
+      "tamano_texto": 14
+    }
+  },
+
+  "tarjetas": {
+    "tarjeta1": {
+      "id_nota": "nota1",
+      "tipo": "flashcard",
+      "pregunta": "¿Qué es Firebase?",
+      "respuesta": "Una plataforma de Google",
+      "opciones": "",
+      "correcta": ""
+    }
+  },
+
+  "recordatorios": {
+    "recordatorio1": {
+      "id_usuario": "usuario1",
+      "nombre": "Pagar servicio",
+      "descripcion": "Recordatorio mensual",
+      "fecha": "2025-01-10",
+      "hora": "12:00",
+      "estado": false,
+      "prioridad": "media",
+      "notificacion": true,
+      "repeticion": "mensual",
+      "tipo": "personal",
+      "color": "azul",
+      "fecha_creacion": { "_seconds": 0, "_nanoseconds": 0 },
+      "fecha_actualizacion": { "_seconds": 0, "_nanoseconds": 0 }
+    }
+  },
+
+  "categorias_finanza": {
+    "catfin1": {
+      "nombre": "Transporte",
+      "tipo": "egreso",
+      "descripcion": "",
+      "color": "gris",
+      "fecha_creacion": { "_seconds": 0, "_nanoseconds": 0 },
+      "fecha_actualizacion": { "_seconds": 0, "_nanoseconds": 0 }
+    }
+  },
+
+  "ingresos": {
+    "ingreso1": {
+      "id_usuario": "usuario1",
+      "id_categoria": "catfin1",
+      "monto": 200,
+      "descripcion": "Pago",
+      "metodo_pago": "efectivo",
+      "origen": "venta",
+      "fecha": "2025-01-07",
+      "hora": "10:00",
+      "fecha_registro": { "_seconds": 0, "_nanoseconds": 0 },
+      "fecha_actualizacion": { "_seconds": 0, "_nanoseconds": 0 }
+    }
+  },
+
+  "egresos": {
+    "egreso1": {
+      "id_usuario": "usuario1",
+      "id_categoria": "catfin1",
+      "monto": 50,
+      "descripcion": "Taxi",
+      "metodo_pago": "tarjeta",
+      "destino": "transporte",
+      "fecha": "2025-01-07",
+      "hora": "09:00",
+      "fecha_registro": { "_seconds": 0, "_nanoseconds": 0 },
+      "fecha_actualizacion": { "_seconds": 0, "_nanoseconds": 0 }
+    }
+  },
+
+  "habitos": {
+    "habito1": {
+      "id_usuario": "usuario1",
+      "nombre_habito": "Leer",
+      "categoria_habito": "estudio",
+      "descripcion": "",
+      "estado_habito": "activo",
+      "frecuencia": "diario",
+      "fecha_creacion": { "_seconds": 0, "_nanoseconds": 0 },
+      "fecha_actualizacion": { "_seconds": 0, "_nanoseconds": 0 }
+    }
+  },
+
+  "seguimiento_habitos": {
+    "registro1": {
+      "id_habito": "habito1",
+      "fecha_registro": "2025-01-05",
+      "hora_registro": "08:00",
+      "estado": "completado",
+      "nota": "Todo bien"
+    }
+  },
+
+  "tienda_productos": {
+    "producto1": {
+      "nombre": "Tema azul",
+      "tipo": "tema",
+      "costo": 50,
+      "descripcion": "",
+      "fecha_vencimiento": null,
+      "canjeado": false,
+      "tipo_cuenta": "free"
+    }
+  },
+
+  "usuarios_productos": {
+    "u_p_1": {
+      "id_usuario": "usuario1",
+      "id_producto": "producto1",
+      "fecha_compra": { "_seconds": 0, "_nanoseconds": 0 }
+    }
+  }
+}
+
