@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "247037460242",
+    "firebase_url": "https://wise-4b5f0-default-rtdb.firebaseio.com",
+    "project_id": "wise-4b5f0",
+    "storage_bucket": "wise-4b5f0.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:247037460242:android:69e1bfb85b0ad66d297dcb",
+        "android_client_info": {
+          "package_name": "com.example.usuario"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "247037460242-efs9fpjc1mijvl3jgp7fmvdtmaumpvmf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.usuario",
+            "certificate_hash": "e32917bfe80cfa8a568866134291bd2d56cd260d"
+          }
+        },
+        {
+          "client_id": "247037460242-paoe89a703n746nfa3488kohkg0jbl7s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJQf-a6DGCgjtUjfWTGaz_ucr-y9ddfgI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "247037460242-paoe89a703n746nfa3488kohkg0jbl7s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
