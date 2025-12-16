@@ -10,6 +10,7 @@ import '../widgets/bottom_nav.dart';
 import '../widgets/tarjetas/note_card.dart';
 import './side_menu.dart';
 
+
 class TiendaPrincipalPage extends StatefulWidget {
   const TiendaPrincipalPage({super.key});
 
@@ -18,14 +19,32 @@ class TiendaPrincipalPage extends StatefulWidget {
 }
 
 class _TiendaPrincipalPageState extends State<TiendaPrincipalPage> {
-  final ApiService api = ApiService();
+  late ApiService api;
 
   String selectedCategory = 'recompensa';
-  int tokens = 850;
+  
 
   final List<String> categories = [
-    'Todas', 'recompensa', 'Producto'
+    'Todas', 'Recompensa', 'Producto'
   ];
+  String idUsuario = "5bqrjQUQVThSxpI1tIvR";
+  int tokens = 0;
+  late String tokenGuardado;
+
+
+Future<void> cargarUsuario() async {
+  try {
+    final data = await api.getUsuario();
+
+    setState(() {
+      idUsuario = data["id"];
+      tokens = data["tokens"];
+    });
+  } catch (e) {
+    debugPrint("Error cargando usuario: $e");
+  }
+}
+
 
   String searchText = "";
 
@@ -35,11 +54,17 @@ class _TiendaPrincipalPageState extends State<TiendaPrincipalPage> {
 
   int navIndex = 1;
 
-  @override
-  void initState() {
-    super.initState();
-    cargarProductos();
-  }
+ @override
+void initState() {
+  super.initState();
+  tokenGuardado = "JWT_REAL_DEL_LOGIN"; // temporal
+
+  api = ApiService(authToken: tokenGuardado); // JWT REAL
+
+  cargarUsuario();
+  cargarProductos();
+}
+
 
   Future<void> cargarProductos() async {
     setState(() => isLoading = true);
@@ -301,15 +326,46 @@ class _TiendaPrincipalPageState extends State<TiendaPrincipalPage> {
                   ),
                 ),
                 ElevatedButton(
-                  onPressed: p.locked ? () => tryUnlock(p) : null,
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12)),
-                    backgroundColor: p.locked
-                        ? const Color(0xFF0EA78D)
-                        : Colors.grey.shade300,
-                    elevation: p.locked ? 4 : 0,
-                  ),
+                onPressed: p.locked
+    ? () async {
+        final res = await api.comprarProducto(
+          idUsuario: idUsuario,
+          idProducto: p.id,
+        );
+
+        if (res["ok"] == true) {
+          setState(() {
+            tokens = res["tokens_restantes"];
+
+            // 🔥 ACTUALIZAR PRODUCTO COMO DESBLOQUEADO
+            final idx = productsOriginal.indexWhere((e) => e.id == p.id);
+            if (idx != -1) {
+              productsOriginal[idx] = ProductoModel(
+                id: p.id,
+                title: p.title,
+                subtitle: p.subtitle,
+                cost: p.cost,
+                premium: p.premium,
+                category: p.category,
+                 // 👈 AQUÍ ESTÁ LA CLAVE
+                vencimiento: p.vencimiento,
+              );
+            }
+          });
+
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text("Producto canjeado")),
+          );
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(res["mensaje"] ?? "Error")),
+          );
+        }
+      }
+    : null,
+
+
+                  
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 12, vertical: 10),
